@@ -10,8 +10,8 @@ stopwords = list(df_stopwords['stopword'])
 stopwords = stopwords + ['영화', '감독', '연출', '배우', '연기', '작품', '관객', '장면', '각본', '개봉', '모르다']
 okt = Okt()
 cleaned_sentences = []
-for review in df.reviews:
-    review = re.sub('^가-힣', ' ', review)
+for review in df.reviews[:2]:
+    review = re.sub('[^가-힣]', ' ', review)
     tokened_review = okt.pos(review, stem=True) #형태소로 나누는데 pos는 명사, 형용사 이런거까지 같이 리턴해준다. 리스트안에 튜플쌍으로 묶어서 리턴.
     print(tokened_review)
     df_token = pd.DataFrame(tokened_review, columns=['word', 'class']) #단어와 품사 컬럼으로 나눠주기

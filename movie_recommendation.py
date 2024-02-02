@@ -21,7 +21,7 @@ with open('./models/tfidf.pickle', 'rb') as f:
 ref_idx = 21     #확인해보고 싶은 영화 인덱스
 
 print(df_reviews.iloc[ref_idx, 0])
-cosine_sim = linear_kernel(Tfidf_matrix[ref_idx], Tfidf_matrix) #11번 인덱스영화와 전체영화와의 cos값을 구해줌.
+cosine_sim = linear_kernel(Tfidf_matrix[ref_idx], Tfidf_matrix) #확인하고싶은 인덱스의 영화와 전체영화와의 cos값을 구해줌.
 print(cosine_sim[0])
 print(len(cosine_sim))
 reccommendation = getRecommendation(cosine_sim)
